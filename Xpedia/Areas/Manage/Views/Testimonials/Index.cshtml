@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Xpedia.Models.Testimonial>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Yarat", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+           Rəsmi rəy başlığı
+        </th>
+        <th>
+          Rəsmi rəy haqqında
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-info" })
+
+            </td>
+            <td>
+                @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

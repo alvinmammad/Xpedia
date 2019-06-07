@@ -1,0 +1,157 @@
+﻿@model VmCarDetail
+@{
+    ViewBag.Title = "CarDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var fullname = Model.CarModel.Brand.Name + " " + Model.CarModel.Name;
+    List<Car> latestCars = ViewBag.LatestCars as List<Car>;
+}
+
+
+<div class="btc_tittle_main_wrapper">
+    <div class="btc_tittle_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_left_heading">
+                    <h1>Maşın haqqında </h1>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_right_heading">
+                    <div class="btc_tittle_right_cont_wrapper">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("index","home")">Ana Səhifə</a>  <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("allcars","car")">Maşınlar</a>  <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>@fullname</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="x_car_book_sider_main_Wrapper float_left mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_car_detail_main_wrapper float_left">
+                            <div class="lr_bc_slider_first_wrapper text-center">
+                                <img src="~/Uploads/Car/@Model.Car.Image" alt="@Model.Car.CarModel.Brand.Name" />
+                            </div>
+                            <div class="x_car_detail_slider_bottom_cont float_left">
+                                <div class="x_car_detail_slider_bottom_cont_left">
+                                    <h3>@fullname</h3>
+                                </div>
+                                <div class="x_car_detail_slider_bottom_cont_right">
+                                    <h3>₼@Model.Car.PricePerDay</h3>
+                                    <p>
+                                        <span></span>
+                                        <br>/ gün
+                                    </p>
+                                </div>
+                                <div class="x_car_detail_slider_bottom_cont_center float_left">
+                                    <p>@Model.Car.Information</p>
+                                </div>
+                                <div class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2">
+                                    <ul class="">
+                                        <li>
+                                            <a href="#"><i class="fas fa-chair"></i> &nbsp;@Model.Car.SeatCount Oturacağ</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fab fa-typo3"></i> &nbsp;@Model.Car.CarType</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fas fa-briefcase"></i> &nbsp;@Model.Car.EngineCapacity cc</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#"><i class="fa fa-horse "></i> &nbsp;@Model.Car.EnginePower a.g</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-snowflake-o"></i>&nbsp;2 Air: @Model.Car.TwoAir</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fas fa-gas-pump"></i> &nbsp;@Model.Car.Fuel</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fas fa-sort-numeric-up"></i> &nbsp;@Model.Car.Year</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-code-fork"></i> &nbsp;@Model.Car.Transmission</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="x_avanticar_btn float_left">
+                                    <ul>
+                                        <li>
+                                            @if (Request.IsAuthenticated)
+                                            {
+                                                <a href="@Url.Action("order","order",new {id=Model.Car.ID })">İndi al</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("login","register",new { ReturnURL = Request.Url.AbsoluteUri.ToString()})">İndi al</a>
+                                            }
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="x_ln_car_heading_wrapper x_ln_car_heading_wrappercsss float_left">
+                                <h3>Latest cars</h3>
+                            </div>
+                            <div class="btc_ln_slider_wrapper btc_ln_slider_wrapper_cs">
+                                <div class="owl-carousel owl-theme">
+                                    @foreach (var latestCar in latestCars)
+                                    {
+                                        <div class="item">
+                                            <div class="x_car_offer_main_boxes_wrapper float_left margintop_zero">
+
+                                                <div class="x_car_offer_img float_left">
+                                                    <img src="~/Uploads/Car/@latestCar.Image" alt="@latestCar.CarType">
+                                                </div>
+                                                <div class="x_car_offer_price float_left">
+                                                    <div class="x_car_offer_price_inner">
+                                                        <h3>₼@latestCar.PricePerDay</h3>
+                                                        <p>
+                                                            <span></span>
+                                                            <br>/ gün
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="x_car_offer_heading float_left">
+                                                    <h2><a href="#">@latestCar.CarType</a></h2>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </div>
+                                <div class="x_car_offer_bottom_btn float_left" style="transform:translateY(50%)">
+                                    <a href="@Url.Action("car","car")" class="--custom_btn" style="transform:translateX(180%)">Bütün maşınlar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

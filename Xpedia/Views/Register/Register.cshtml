@@ -1,0 +1,149 @@
+﻿@model VmRegister
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="btc_tittle_main_wrapper">
+    <div class="btc_tittle_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_left_heading">
+                    <h1>Qeydiyyat</h1>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_right_heading">
+                    <div class="btc_tittle_right_cont_wrapper">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("index","home")">Ana Səhifə</a>  <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>Qeydiyyat</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="x_partner_main_wrapper float_left padding_tb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_offer_car_heading_wrapper float_left">
+                    <h3>qeydiyyatdan keçin</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-12 col-sm-12 col-12">
+                <!-- login_wrapper -->
+                @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+                {
+                    if (ViewBag.Message != null)
+                    {
+                <div class="alert alert-success">
+                    <strong>Əla!</strong> @ViewBag.Message
+                </div>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="register_wrapper_box">
+                            <div class="register_left_form">
+                                <div class="jp_regiter_top_heading">
+                                    <p>* ilə işarə olunan sahələr boş ola bilməz</p>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { placeholder = "Adınız" } })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { placeholder = "Soyadınız" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { placeholder = "İstifadəçi adınız" } })
+                                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                    </div>
+                                    <!--Form Group-->
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "E-Poçt", @type = "email" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Şifrə", @type = "password" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <!--Form Group-->
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { placeholder = "Təkrar şifrə", @type = "password" } })
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <!--Form Group-->
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { placeholder = "Əlaqə nömrəniz" } })
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { placeholder = "Adresiniz" } })
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="check-box text-center">
+                                            <input type="checkbox" name="shipping-option" id="account-option_2"> &ensp;
+                                            <label for="account-option_2" class="label_2">I agreed to the <a href="#" class="check_box_anchr">Terms and Conditions</a> governing the use of weapon store</label>
+                                        </div>
+                                    </div>
+                                    <div class="login_btn_wrapper register_btn_wrapper login_wrapper register_wrapper_btn">
+
+                                        <input type="submit" name="name" value="Yarat" class="--custom_btn" />
+                                    </div>
+
+
+                                    <div class="login_message">
+                                        <p>İstifadəçisiniz? <a href="@Url.Action("login")"> Daxil olun</a> </p>
+                                    </div>
+
+                                </div>
+                                @if (ViewBag.Message != null)
+                                {
+                                    <div class="alert alert-danger">
+                                       @ViewBag.Message
+                                    </div>
+                                }
+                            </div>
+
+
+
+                        </div>
+
+                    }
+                }
+
+
+
+
+            </div>
+            <!-- /.login_wrapper-->
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

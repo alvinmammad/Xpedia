@@ -1,0 +1,681 @@
+﻿@model VmHome
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="slider-area float_left">
+    <div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <div class="carousel-captions caption-1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="content">
+                                    <h2 data-animation="animated fadeInLeft" class="">
+                                        CHEAP CAR RENTAL IN<br>
+                                        your desired destination
+                                    </h2>
+                                    <p data-animation="animated bounceInUp" class="">
+                                        One of our top priorities is to adjust each package we offer to our
+                                        <br>customer’s exact needs. Rental Cars / Bike / Jeeps <span>Starting @@ $3 / Hrs</span>
+                                    </p>
+                                    <div class="hs_effect_btn">
+                                        <ul>
+                                            <li data-animation="animated flipInX" class="">
+                                                <a href="#">about us<i class="fa fa-arrow-right"></i></a>
+                                            </li>
+                                            <li data-animation="animated flipInX" class="">
+                                                <a href="#">contact<i class="fa fa-arrow-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block">
+                                <div class="content_tabs">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="x_slider_form_main_wrapper float_left" data-animation="animated fadeIn">
+                                                <div class="x_slider_form_heading_wrapper float_left">
+                                                    <h3>Let’s find your perfect car</h3>
+                                                </div>
+                                                <form method="get" action="@Url.Action("getindex","home")" id="orderForm">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="x_slider_form_input_wrapper float_left">
+                                                                <h3>Götürülmə məntəqəsi</h3>
+                                                                <select class="form-control required" id="PickUpLocation" name="PickUpLocation" data-val="true" data-val-required="Götürülmə məntəqəsi boş ola bilməz" data-validation="required" data-validation-optional="true" required>
+                                                                    <option value=""></option>
+                                                                    @foreach (var location in Model.Locations)
+                                                                    {
+                                                                        <option value="@location.ID">@location.Name</option>
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="x_slider_form_input_wrapper float_left">
+                                                                <h3>Qaytarılma məntəqəsi</h3>
+                                                                <select class="form-control" id="DropOffLocation" name="DropOffLocation" data-val="true" data-val-required="Qaytarılma məntəqəsi boş ola bilməz" data-validation="required" data-validation-optional="true" required>
+                                                                    <option value=""></option>
+                                                                    @foreach (var location in Model.Locations)
+                                                                    {
+                                                                        <option value="@location.ID">@location.Name</option>
+                                                                    }
+                                                                </select>
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="DropOffLocation" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-sec-header">
+                                                                <h3>Götürülmə vaxtı</h3>
+                                                                <input type="text" placeholder="@DateTime.Now.ToString("dd-MM-yyyy")" class="form-control checkIn" name="PickUpDate" id="pickdate" autocomplete="off" data-val="true" data-val-required="Götürülmə vaxtı boş ola bilməz" data-validation="required" data-validation-optional="true">
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="PickUpDate" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-sec-header">
+                                                                <h3>Qaytarılma vaxtı</h3>
+                                                                <input type="text" placeholder="@DateTime.Now.ToString("dd-MM-yyyy")" class="form-control checkOut" name="DropOffDate" id="dropdate" autocomplete="off" data-val="true" data-val-required="Qaytarılma vaxtı boş ola bilməz" data-validation="required" data-validation-optional="true">
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="DropOffDate" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                        <div class="col-md-12">
+                                                            <div class="x_slider_checkbox_bottom float_left">
+                                                                <div class="x_slider_checout_left">
+                                                                    <ul>
+                                                                        <li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;24/7 Telefon xidməti</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="x_slider_checout_right">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <button type="submit" class="carSearchBtn filter">Axtar</button>
+                                                                        </li>
+                                                                    </ul>
+                                                                    @if (ViewBag.LocationErr != null)
+                                                                    {
+                                                                        <strong>
+                                                                            @ViewBag.LocationErr
+                                                                        </strong>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-captions caption-2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="content">
+                                    <h2 data-animation="animated fadeInLeft" class="">
+                                        CHEAP CAR RENTAL IN<br>
+                                        your desired destination
+                                    </h2>
+                                    <p data-animation="animated bounceInUp" class="">
+                                        One of our top priorities is to adjust each package we offer to our
+                                        <br>customer’s exact needs. Rental Cars / Bike / Jeeps <span>Starting @@ $3 / Hrs</span>
+                                    </p>
+                                    <div class="hs_effect_btn">
+                                        <ul>
+                                            <li data-animation="animated flipInX" class="">
+                                                <a href="#">about us<i class="fa fa-arrow-right"></i></a>
+                                            </li>
+                                            <li data-animation="animated flipInX" class="">
+                                                <a href="#">contact<i class="fa fa-arrow-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block">
+                                <div class="content_tabs">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="x_slider_form_main_wrapper float_left" data-animation="animated fadeIn">
+                                                <div class="x_slider_form_heading_wrapper float_left">
+                                                    <h3>Let’s find your perfect car</h3>
+                                                </div>
+                                                <form method="get" action="@Url.Action("getindex","home")" id="orderForm">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="x_slider_form_input_wrapper float_left">
+                                                                <h3>Götürülmə məntəqəsi</h3>
+                                                                <select class="form-control required" id="PickUpLocation" name="PickUpLocation" data-val="true" data-val-required="Götürülmə məntəqəsi boş ola bilməz" data-validation="required" data-validation-optional="true" required>
+                                                                    <option value=""></option>
+                                                                    @foreach (var location in Model.Locations)
+                                                                    {
+                                                                        <option value="@location.ID">@location.Name</option>
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="x_slider_form_input_wrapper float_left">
+                                                                <h3>Qaytarılma məntəqəsi</h3>
+                                                                <select class="form-control" id="DropOffLocation" name="DropOffLocation" data-val="true" data-val-required="Qaytarılma məntəqəsi boş ola bilməz" data-validation="required" data-validation-optional="true" required>
+                                                                    <option value=""></option>
+                                                                    @foreach (var location in Model.Locations)
+                                                                    {
+                                                                        <option value="@location.ID">@location.Name</option>
+                                                                    }
+                                                                </select>
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="DropOffLocation" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-sec-header">
+                                                                <h3>Götürülmə vaxtı</h3>
+                                                                <input type="text" placeholder="@DateTime.Now.ToString("dd-MM-yyyy")" class="form-control checkIn" name="PickUpDate" id="pickdate" autocomplete="off" data-val="true" data-val-required="Götürülmə vaxtı boş ola bilməz" data-validation="required" data-validation-optional="true">
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="PickUpDate" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-sec-header">
+                                                                <h3>Qaytarılma vaxtı</h3>
+                                                                <input type="text" placeholder="@DateTime.Now.ToString("dd-MM-yyyy")" class="form-control checkOut" name="DropOffDate" id="dropdate" autocomplete="off" data-val="true" data-val-required="Qaytarılma vaxtı boş ola bilməz" data-validation="required" data-validation-optional="true">
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="DropOffDate" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <div class="x_slider_checkbox_bottom float_left">
+                                                                <div class="x_slider_checout_left">
+                                                                    <ul>
+                                                                        <li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;24/7 Telefon xidməti</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="x_slider_checout_right">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <button type="submit" class="carSearchBtn filter">Axtar</button>
+                                                                        </li>
+                                                                    </ul>
+                                                                    @if (ViewBag.LocationErr != null)
+                                                                    {
+                                                                        <strong>
+                                                                            @ViewBag.LocationErr
+                                                                        </strong>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-captions caption-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="content">
+                                    <h2 data-animation="animated fadeInLeft">
+                                        CHEAP CAR RENTAL IN<br>
+                                        your desired destination
+                                    </h2>
+                                    <p data-animation="animated bounceInUp">
+                                        One of our top priorities is to adjust each package we offer to our
+                                        <br>customer’s exact needs. Rental Cars / Bike / Jeeps <span>Starting @@ $3 / Hrs</span>
+                                    </p>
+                                    <div class="hs_effect_btn">
+                                        <ul>
+                                            <li data-animation="animated flipInX">
+                                                <a href="#">about us<i class="fa fa-arrow-right"></i></a>
+                                            </li>
+                                            <li data-animation="animated flipInX">
+                                                <a href="#">contact<i class="fa fa-arrow-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block">
+                                <div class="content_tabs">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="x_slider_form_main_wrapper float_left" data-animation="animated fadeIn">
+                                                <div class="x_slider_form_heading_wrapper float_left">
+                                                    <h3>Let’s find your perfect car</h3>
+                                                </div>
+                                                <form method="get" action="@Url.Action("getindex","home")" id="orderForm">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="x_slider_form_input_wrapper float_left">
+                                                                <h3>Götürülmə məntəqəsi</h3>
+                                                                <select class="form-control required" id="PickUpLocation" name="PickUpLocation" data-val="true" data-val-required="Götürülmə məntəqəsi boş ola bilməz" data-validation="required" data-validation-optional="true" required>
+                                                                    <option value=""></option>
+                                                                    @foreach (var location in Model.Locations)
+                                                                    {
+                                                                        <option value="@location.ID">@location.Name</option>
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="x_slider_form_input_wrapper float_left">
+                                                                <h3>Qaytarılma məntəqəsi</h3>
+                                                                <select class="form-control" id="DropOffLocation" name="DropOffLocation" data-val="true" data-val-required="Qaytarılma məntəqəsi boş ola bilməz" data-validation="required" data-validation-optional="true" required>
+                                                                    <option value=""></option>
+                                                                    @foreach (var location in Model.Locations)
+                                                                    {
+                                                                        <option value="@location.ID">@location.Name</option>
+                                                                    }
+                                                                </select>
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="DropOffLocation" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-sec-header">
+                                                                <h3>Götürülmə vaxtı</h3>
+                                                                <input type="text" placeholder="@DateTime.Now.ToString("dd-MM-yyyy")" class="form-control checkIn" name="PickUpDate" id="pickdate" autocomplete="off" data-val="true" data-val-required="Götürülmə vaxtı boş ola bilməz" data-validation="required" data-validation-optional="true">
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="PickUpDate" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-sec-header">
+                                                                <h3>Qaytarılma vaxtı</h3>
+                                                                <input type="text" placeholder="@DateTime.Now.ToString("dd-MM-yyyy")" class="form-control checkOut" name="DropOffDate" id="dropdate" autocomplete="off" data-val="true" data-val-required="Qaytarılma vaxtı boş ola bilməz" data-validation="required" data-validation-optional="true">
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="DropOffDate" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <div class="x_slider_checkbox_bottom float_left">
+                                                                <div class="x_slider_checout_left">
+                                                                    <ul>
+                                                                        <li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;24/7 Telefon xidməti</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="x_slider_checout_right">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <button type="submit" class="carSearchBtn filter">Axtar</button>
+                                                                        </li>
+                                                                    </ul>
+                                                                    @if (ViewBag.LocationErr != null)
+                                                                    {
+                                                                        <strong>
+                                                                            @ViewBag.LocationErr
+                                                                        </strong>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
+                    <span class="number"></span>
+                </li>
+                <li data-target="#carousel-example-generic" data-slide-to="1" class="">
+                    <span class="number"></span>
+                </li>
+                <li data-target="#carousel-example-generic" data-slide-to="2" class="">
+                    <span class="number"></span>
+                </li>
+            </ol>
+            <div class="carousel-nevigation">
+                <a class="prev" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="next" href="#carousel-example-generic" role="button" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="x_offer_car_main_wrapper float_left padding_tb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_offer_car_heading_wrapper float_left">
+                    <h4>Nə təklif edirik</h4>
+                    <h3>Maşını seç</h3>
+                    <p>
+                        Xpedia kirayə maşınlar, transfer və sürücü xidmətləri təklif edir.
+                        Rent a car sahəsində 2019-ci ildə etibarən professional olaraq fəaliyyət göstəririk.
+                        Etibarlı və sərfəli avtomobil icarəsi lazımdırsa, xidmətlərimizdən yararlanın.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12">
+              
+                <div class="tab-content">
+                    <div id="home" class="tab-pane active homeCar">
+                        <div class="row">
+                            @foreach (var car in Model.Cars)
+                            {
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="x_car_offer_main_boxes_wrapper float_left">
+                                        <div class="x_car_offer_starts float_left">
+                                        </div>
+                                        <div class="x_car_offer_img float_left">
+                                            <img src="~/Uploads/Car/@car.Image" alt="@car.CarModel.Name">
+                                        </div>
+                                        <div class="x_car_offer_price float_left">
+                                            <div class="x_car_offer_price_inner">
+                                                <h6> &nbsp;@(car.Discount > 0 ? Convert.ToInt32(car.Discount) + "%" + " " + "Endirim" : "")</h6>
+                                                <h3>₼@car.PricePerDay</h3>
+                                                <p>
+                                                    <span></span>
+                                                    <br>/ gün
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="x_car_offer_heading float_left">
+                                            <h2><a href="#">@car.CarModel.Brand.Name  @car.CarModel.Name</a></h2>
+                                            <p>@car.CarType</p>
+                                        </div>
+                                     
+                                        <div class="x_car_offer_bottom_btn float_left">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">İndi al!</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Detallı!</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                            <div class="col-md-12">
+                                <div class="x_tabs_botton_wrapper float_left">
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("car","car")">Bütün maşınlar<i class="fa fa-arrow-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- xs offer car tabs End -->
+<!-- btc team Wrapper Start -->
+<!-- btc team Wrapper End -->
+<!-- x counter Wrapper Start -->
+<div class="x_counter_main_wrapper">
+    <div class="x_counter_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_counter_car_heading_wrapper float_left">
+                    <h4>İş Prosesi</h4>
+                    <h3>Necə işləyir?</h3>
+                    <p>
+                        Biz sizin vaxtınıza qənaət edəcək və sizə lazım olan avtomobili seçməkdə köməkçi ola biləcək
+                        çox rahat onlayn sifariş sistemini tədbiq etdik. Cəmi bir neçə addıma rahatlıqla seçiminizi edin :
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="x_cou_main_box_wrapper">
+                    <div class="x_icon">
+                        <i class="flaticon-airplane-shape"></i>
+                    </div>
+                    <h5><span>1.</span> <a href="#">Yeri təyin et</a></h5>
+
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="x_cou_main_box_wrapper">
+                    <div class="x_icon">
+                        <i class="flaticon-calendar"></i>
+                    </div>
+                    <h5><span>2.</span> <a href="#">vaxtı seç</a></h5>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="x_cou_main_box_wrapper">
+                    <div class="x_icon">
+                        <i class="flaticon-sedan-car-front"></i>
+                    </div>
+                    <h5><span>3.</span> <a href="#">maşını seç</a></h5>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="x_cou_main_box_wrapper x_cou_main_box_wrapper_last">
+                    <div class="x_icon">
+                        <i class="flaticon-emoticon-square-smiling-face-with-closed-eyes"></i>
+                    </div>
+                    <h5><span>4.</span> <a href="#">səyahətdən həzz al</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- x counter Wrapper End -->
+<!-- x booking Wrapper Start -->
+<div class="x_booking_main_wrapper float_left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="x_book_logo_wrapper float_left">
+                    <img src="~/UI/images/white_logo.png" alt="logo">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="x_book_logo_heading_wrapper float_left">
+                    <h3>Xpedia!</h3>
+                    <p>Bazarda ən məşhur maşın icarə vebsaytı.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="x_book_logo_btn float_left">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("car","car")">Bütün maşınlar<i class="fa fa-arrow-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- x booking Wrapper End -->
+<!-- xs offer car tabs Start -->
+<div class="x_offer_car_main_wrapper x_offer_testislider_main_wrapper float_left padding_tb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_offer_car_heading_wrapper float_left">
+                    <h4>Rəsmi Rəylər</h4>
+                    <h3>@Model.Testimonial.Title</h3>
+                    <p>@Model.Testimonial.Desc</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="screenshot">
+                    <div class="owl-carousel screen nplr screen-loop">
+                        @foreach (var review in Model.TestimonialItems)
+                        {
+                            <div>
+                                <div class="card valign-wrapper">
+
+                                    <div class="card-image">
+                                        <img src="~/Uploads/Testimonial/@review.Photo" alt="@review.Fullname">
+                                    </div>
+
+                                    <div class="card-content center-align valign">
+
+                                        <p>“ @review.Review ”</p>
+
+                                        <p class="card-title">
+                                            @review.Fullname <span>@review.TestimonialRole.Name</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- btc team Wrapper Start -->
+<div class="x_why_main_wrapper">
+    <div class="x_why_img_overlay"></div>
+    <div class="container">
+        <div class="x_why_left_main_wrapper">
+            <img src="~/Uploads/Settings/@Model.Setting.ChooseUsPhoto" alt="@Model.Setting.ChooseUsTitle">
+        </div>
+        <div class="x_why_right_main_wrapper">
+            <h3>@Model.Setting.ChooseUsTitle ?</h3>
+            <p>@Model.Setting.ChooseUsDesc</p>
+            <ul>
+                <li>
+                    <a href="@Url.Action("service","service")">@Model.Setting.ChooseUsButtonText <i class="fa fa-arrow-right"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- btc team Wrapper End -->
+<!-- xs offer car tabs Start -->
+<div class="x_ln_car_main_wrapper float_left padding_tb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_ln_car_heading_wrapper float_left">
+                    <h3>Latest cars</h3>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="btc_ln_slider_wrapper">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var latestCar in Model.Blogs)
+                        {
+                            <div class="item">
+                                <div class="btc_team_slider_cont_main_wrapper">
+                                    <div class="btc_ln_img_wrapper float_left">
+                                        <img src="~/Uploads/@latestCar.Photo" alt="@latestCar.Title">
+                                    </div>
+                                    <div class="btc_ln_img_cont_wrapper float_left">
+                                        <h4><a href="@Url.Action("blogdetail","blog",new {latestCar.Slug })">@latestCar.Title</a></h4>
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="fa fa-calendar"></i> &nbsp; @latestCar.Date.ToString("MMMM dd,yyyy")</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fa fa-user"></i> &nbsp;tərəfindən @latestCar.Author.Fullname</a>
+                                            </li>
+                                        </ul>
+                                        <p>@latestCar.Desc</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--js Start-->
+<!-- xs offer car tabs Start -->
+<div class="x_partner_main_wrapper float_left padding_tb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_offer_car_heading_wrapper float_left">
+                    <h3>markalarımız</h3>
+                    <p>
+                        Xpedia kirayə maşınlar, transfer və sürücü xidmətləri təklif edir.
+                        <br>Rent a car sahəsində 2019-ci ildə etibarən professional olaraq fəaliyyət göstəririk.
+                        <br>Etibarlı və sərfəli avtomobil icarəsi lazımdırsa, xidmətlərimizdən yararlanın.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="wrap-album-slider">
+                    <ul class="album-slider">
+                        @foreach (var brand in Model.LogoSliders)
+                        {
+                            <li class="album-slider__item" style="width:50px">
+                                <figure class="album">
+                                    <img src="~/Uploads/CarLogos/@brand.Logo" alt="" style="width:130px">
+                                </figure>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+
+
+</script>
+
+@section Scripts{
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>*@
+    @*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @*<script src="~/UI/js/my.js"></script>*@
+
+}

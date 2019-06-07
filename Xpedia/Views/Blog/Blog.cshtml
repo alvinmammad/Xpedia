@@ -1,0 +1,213 @@
+﻿@model  VmBlog
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Blog> lastblog = ViewBag.Latest as List<Blog>;
+    List<Tag> tags = ViewBag.Tag as List<Tag>;
+    
+}
+
+
+
+    
+    <div class="btc_tittle_main_wrapper">
+        <div class="btc_tittle_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_left_heading">
+                        <h1>Bloq</h1>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_right_heading">
+                        <div class="btc_tittle_right_cont_wrapper">
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("index","home")">Ana Səhifə</a>  <i class="fa fa-angle-right"></i>
+                                </li>
+                                <li>Bloq</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- btc tittle Wrapper End -->
+    <!-- x blog main and sidebar Wrapper Start -->
+    <div class="x_blog_sidebar_main_wrapper float_left padding_tb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="x_blog_left_side_wrapper float_left">
+                        <div class="row">
+                            @foreach (var blog in Model.Blogs)
+                            {
+                                <div class="col-md-12">
+                                    <div class="lr_bc_first_box_main_wrapper">
+                                        <div class="lr_bc_first_box_img_wrapper">
+                                            <img src="~/Uploads/Blog/@blog.Photo" alt="@blog.Title">
+                                        </div>
+                                        <div class="lr_bc_first_box_img_cont_wrapper">
+                                            <h2>@blog.Title</h2>
+                                            <ul>
+                                                <li>
+                                                    <i class="fa fa-calendar"></i>&nbsp; <a href="#">@blog.Date.ToString("MMMM dd,yyyy")</a>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-user-o"></i>&nbsp; <a href="#">by @blog.Author.Fullname</a>
+                                                </li>
+                                               
+                                            </ul>
+                                            <p>@blog.Info</p>
+                                            <span>
+                                            <a href="@Url.Action("blogdetail","blog",new {blog.Slug})">Ətraflı&nbsp;<i class="fa fa-angle-double-right">
+                                                   </i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                            <div class="col-md-12">
+                                <div class="pager_wrapper prs_blog_pagi_wrapper blog_pager_wrapper">
+                                    <ul class="pagination">
+                                        @if (Model.Page != 1)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("blog","blog",new {page=Model.Page-1})"><i class="flaticon-left-arrow"></i></a>
+                                            </li>
+                                        }
+                                        @for (int i = 1; i <= Model.TotalPage; i++)
+                                        {
+                                            <li class="btc_shop_pagi">
+                                                <a href="@Url.Action("blog","blog",new {page=i })">@i</a>
+                                            </li>
+                                        }
+
+
+                                        @if (Model.Page != Model.TotalPage)
+                                        {
+                                        <li>
+                                            <a href="@Url.Action("blog","blog",new {page=Model.Page+1 })"><i class="flaticon-right-arrow"></i></a>
+                                        </li>
+                                        }
+
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="x_blog_right_side_wrapper float_left">
+                        <div class="row">
+                            @*<div class="col-md-12">
+                                <div class="jp_rightside_job_categories_wrapper jp_blog_right_box_search">
+                                    <div class="jp_rightside_job_categories_heading">
+                                        <h4>Axtar</h4>
+                                    </div>
+                                    <div class="jp_blog_right_search_wrapper">
+                                        <input type="text" placeholder="Axtar">
+                                        <button type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>*@
+                            <div class="col-md-12">
+                                <div class="jp_rightside_job_categories_wrapper jp_rightside_job_categories_wrapper2">
+                                    <div class="jp_rightside_job_categories_heading">
+                                        <h4>Kateqoriyalar</h4>
+                                    </div>
+                                    <div class="jp_rightside_job_categories_content">
+                                        <ul>
+                                            @foreach (var category in Model.Categories)
+                                            {
+                                                <li>
+                                                    <i class="fa fa-long-arrow-right"></i> &nbsp;&nbsp;<a href="@Url.Action("blog","blog",new {category=category.ID })">@category.Name </a>
+                                                </li>
+                                            }
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="jp_rightside_job_categories_wrapper jp_rightside_job_categories_wrapper2">
+                                    <div class="jp_rightside_job_categories_heading">
+                                        <h4>son xəbərlər</h4>
+                                    </div>
+                                    <div class="jp_rightside_career_main_content">
+                                        @foreach (var last in lastblog)
+                                        {
+                                            <div class="jp_rightside_career_content_wrapper">
+                                                <div class="jp_rightside_career_img">
+                                                    <img src="~/Uploads/Blog/@last.Photo" alt="@last.Title" style="width:60px"/>
+                                                </div>
+                                                <div class="jp_rightside_career_img_cont">
+                                                    <h4>
+                                                        <a href="@Url.Action("blogdetail","blog",new {last.Slug})">
+                                                            @last.Title
+                                                        </a>
+                                                    </h4>
+                                                    <p><i class="fa fa-calendar-o"></i> &nbsp; @last.Date.ToString("dd MMM,yyyy")</p>
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="jp_rightside_job_categories_wrapper jp_rightside_job_categories_wrapper2">
+                                    <div class="jp_rightside_job_categories_heading">
+                                        <h4>Arxivlər</h4>
+                                    </div>
+                                    <div class="jp_rightside_job_categories_content">
+                                        <ul>
+                                            @foreach (var archive in Model.Archives)
+                                                {
+                                                    var date = new DateTime(archive.Year, archive.Month, 1);
+
+                                                <li>
+                                                    <i class="fa fa-long-arrow-right"></i> &nbsp;&nbsp;<a href="@Url.Action("blog","blog", new{category = Model.Category,month=archive.Month,year=archive.Year })">@date.ToString("MMMM - yyyy") </a>
+                                                </li>
+                                            }
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="jp_rightside_job_categories_wrapper jp_rightside_job_categories_wrapper2">
+                                    <div class="jp_rightside_job_categories_heading">
+                                        <h4>Teqlər</h4>
+                                    </div>
+                                    <div class="blog_category_side_menu">
+                                        <ul>
+                                            @foreach (var tag in tags)
+                                            {
+                                                <li>
+                                                    <a href="#">@tag.Name</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

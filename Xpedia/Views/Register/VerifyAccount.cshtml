@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    <div class="alert alert-success">
+        Hesabınız uğurla aktivləşdirildi . @Html.ActionLink("Login", "Login", "Register") klik edin.
+    </div>
+}
+
+else
+{
+
+    <div class="alert alert-danger">
+        @ViewBag.Message
+    </div>
+}

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Xpedia.Models.TestimonialItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Yarat", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Rəsmi rəy sahibinin rolu
+        </th>
+        <th>
+           Rəsmi rəy sahibinin şəkli
+        </th>
+        <th>
+          Rəyi
+        </th>
+        <th>
+           Rəsmi rəy sahibinin rəyi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestimonialRole.Name)
+        </td>
+        <td>
+            <img src="~/Uploads/Testimonial/@item.Photo" alt="Alternate Text" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Review)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fullname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-info" })
+
+        </td>
+        <td>
+            @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

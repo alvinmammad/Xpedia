@@ -1,0 +1,64 @@
+﻿@model VmCar
+@{ 
+    CarModel carmodel = ViewBag.CarModels as CarModel;
+}
+
+@if (ViewBag.LocationError != "Axtardığınız məntəqədə və seçilən tarixdə maşın yoxdur." || Model.Cars.Count!=0 || Model!=null)
+{
+<div class="row">
+    @foreach (var order in Model.Cars)
+    {
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="x_car_offer_main_boxes_wrapper float_left">
+                <div class="x_car_offer_img float_left">
+                    <img src="~/Uploads/Car/@order.Image" alt="">
+                </div>
+                <div class="x_car_offer_price float_left">
+                    <div class="x_car_offer_price_inner">
+                        <h6><i class="fa fa-tag"></i> &nbsp;@(order.Discount > 0 ? Convert.ToInt32(order.Discount) + "%" + " " + "Endirim" : "")</h6>
+                        <h3>₼@order.PricePerDay</h3>
+                        <p>
+                            <span>1</span>
+                            <br>/ gün
+                        </p>
+                    </div>
+                </div>
+                <div class="x_car_offer_heading float_left">
+                    <h2><a href="#"> @order.CarModel.Brand.Name @order.CarModel.Name</a></h2>
+                    <p>@order.CarType</p>
+                </div>
+
+                <div class="x_car_offer_bottom_btn float_left">
+                    <ul>
+                        <li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <a href="@Url.Action("order","order",new {id=order.ID })">İndi al</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("login","register",new { ReturnURL = Request.Url.AbsoluteUri.ToString()})">İndi al</a>
+                            }
+                        </li>
+                        <li>
+                            <a href="@Url.Action("cardetail","car" , new {order.ID})">Detallı</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+</div>
+}
+else
+{
+<div class="alert alert-danger">
+
+    <p style="text-align:center;font-weight:600">@ViewBag.LocationError</p>
+
+</div>
+   
+}

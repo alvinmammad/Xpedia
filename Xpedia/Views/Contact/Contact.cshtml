@@ -1,0 +1,306 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Setting setting = ViewBag.Setting as Setting;
+    Contact contact = ViewBag.Contact as Contact;
+    List<LogoSlider> brands = ViewBag.LogoSlider as List<LogoSlider>;
+
+}
+@*<style>
+    .control-label {
+        display: block;
+    }
+
+    .autocomplete-wrapper {
+        position: relative;
+    }
+
+        .autocomplete-wrapper input {
+            width: 100%;
+        }
+
+    .autocomplete-results {
+        position: absolute;
+        background: white;
+        z-index: 1;
+        top: 100%;
+        left: 0;
+        font-size: 13px;
+        border: solid 1px #ddd;
+        border-top-width: 0;
+        border-bottom-color: #ccc;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .autocomplete-result {
+        padding: 12px 15px;
+        border-bottom: solid 1px #eee;
+        cursor: pointer;
+    }
+
+        .autocomplete-result:last-child {
+            border-bottom-width: 0;
+        }
+
+    .autocomplete-location {
+        opacity: 0.8;
+        font-size: smaller;
+    }
+
+    .autocomplete-results[data-highlight="0"] > :nth-child(1) {
+        color: white;
+        background: #26c9ff;
+        border-bottom-color: #26c9ff;
+        outline: solid 1px #00b6f2;
+    }
+
+    .autocomplete-results[data-highlight="1"] > :nth-child(2) {
+        color: white;
+        background: #26c9ff;
+        border-bottom-color: #26c9ff;
+        outline: solid 1px #00b6f2;
+    }
+
+    .autocomplete-results[data-highlight="2"] > :nth-child(3) {
+        color: white;
+        background: #26c9ff;
+        border-bottom-color: #26c9ff;
+        outline: solid 1px #00b6f2;
+    }
+
+    .autocomplete-results[data-highlight="3"] > :nth-child(4) {
+        color: white;
+        background: #26c9ff;
+        border-bottom-color: #26c9ff;
+        outline: solid 1px #00b6f2;
+    }
+
+    .autocomplete-results[data-highlight="4"] > :nth-child(5) {
+        color: white;
+        background: #26c9ff;
+        border-bottom-color: #26c9ff;
+        outline: solid 1px #00b6f2;
+    }
+
+    .autocomplete-results[data-highlight="5"] > :nth-child(6) {
+        color: white;
+        background: #26c9ff;
+        border-bottom-color: #26c9ff;
+        outline: solid 1px #00b6f2;
+    }
+
+    .autocomplete-results[data-highlight="6"] > :nth-child(7) {
+        color: white;
+        background: #26c9ff;
+        border-bottom-color: #26c9ff;
+        outline: solid 1px #00b6f2;
+    }
+
+    .autocomplete-results[data-highlight="7"] > :nth-child(8) {
+        color: white;
+        background: #26c9ff;
+        border-bottom-color: #26c9ff;
+        outline: solid 1px #00b6f2;
+    }
+@*</style>*@
+
+
+<div class="btc_tittle_main_wrapper">
+    <div class="btc_tittle_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_left_heading">
+                    <h1>əlaqə</h1>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_right_heading">
+                    <div class="btc_tittle_right_cont_wrapper">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("index","home")">Ana Səhifə</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>Contact Us</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- btc tittle Wrapper End -->
+<!-- xs offer car tabs Start -->
+<div class="x_contact_title_main_wrapper float_left padding_tb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_offer_car_heading_wrapper x_offer_car_heading_wrapper_contact float_left">
+                    <h4>get in touch</h4>
+                    <h3>@contact.Title</h3>
+                    <p>
+                        @contact.Desc
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 full_width">
+                <div class="x_contact_title_icon_cont_main_box">
+                    <div class="x_contact_title_icon">
+                        <i class="fa fa-map-marker"></i>
+                    </div>
+                    <div class="x_contact_title_icon_cont">
+                        <h3><a href="#">addres</a></h3>
+                        <p>@contact.Address</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 full_width">
+                <div class="x_contact_title_icon_cont_main_box">
+                    <div class="x_contact_title_icon">
+                        <i class="flaticon-phone-call"></i>
+                    </div>
+                    <div class="x_contact_title_icon_cont">
+                        <h3><a href="#">şəhər telefonları</a></h3>
+                        <p>
+                            @contact.Phone
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 full_width">
+                <div class="x_contact_title_icon_cont_main_box">
+                    <div class="x_contact_title_icon">
+                        <i class="flaticon-mail-send"></i>
+                    </div>
+                    <div class="x_contact_title_icon_cont">
+                        <h3><a href="#">e-poçt</a></h3>
+                        <p>
+                            <a href="#">@contact.Email</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- map section start -->
+<div class="map_main_wrapper">
+    <div id="map"></div>
+</div>
+<!-- map section End -->
+<!-- xs offer car tabs Start -->
+<form action="@Url.Action("message")" method="post" id="message-contact">
+    <div class="x_contact_title_main_wrapper float_left padding_tb_100">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-xl-5 offset-xl-1 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="contect_form1">
+                        <input type="text" placeholder="Ad *" name="name" required>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="contect_form2">
+                        <input type="text" placeholder="Soyad *" name="surname" required>
+                    </div>
+                </div>
+                <div class="col-xl-5 offset-xl-1 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="contect_form2">
+                        <input type="email" placeholder="E-poçt *" name="email" required data-validation="email">
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="contect_form2">
+                        <input type="tel" placeholder="Əlaqə nömrəniz *" name="phone" required>
+                    </div>
+                </div>
+                <div class="col-xl-10 offset-xl-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="contect_form4">
+                        <textarea rows="4" placeholder="Mesajınız" class="form-messages" name="message" required></textarea>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="contect_btn contect_btn_contact">
+                        <ul>
+                            <p class="form-messages"></p>
+                            <li>
+                                <button type="submit" class="--custom_btn">Göndər!</button>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- xs offer car tabs Start -->
+<div class="x_partner_main_wrapper float_left padding_tb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_offer_car_heading_wrapper float_left">
+                    <h3>markalarımız</h3>
+                    <p>
+                        Xpedia kirayə maşınlar, transfer və sürücü xidmətləri təklif edir.
+                        <br>Rent a car sahəsində 2019-ci ildə etibarən professional olaraq fəaliyyət göstəririk.
+                        <br>Etibarlı və sərfəli avtomobil icarəsi lazımdırsa, xidmətlərimizdən yararlanın.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="wrap-album-slider">
+                    <ul class="album-slider">
+                        @foreach (var brand in brands)
+                        {
+                            <li class="album-slider__item" style="width:50px">
+                                <figure class="album">
+                                    <img src="~/Uploads/CarLogos/@brand.Logo" alt="" style="width:130px">
+                                </figure>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="autocomplete" style="width:300px;">
+        <input id="myInput" type="text" name="myCountry" placeholder="Country">
+    </div>
+
+<!-- custom js-->
+<script>
+    function initMap() {
+        var uluru = {
+            lat: 40.377133,
+            lng: 49.853966  
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            scrollwheel: false,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+
+
+    
+   
+</script>
+@*<script src="~/UI/js/my.js"></script>*@
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrhmfkDVwN87SyAPFdoWMeanyvXmhCKf8&callback=initMap"
+        type="text/javascript"></script>
+
+<script src="~/UI/js/jquery-3.3.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
+
+

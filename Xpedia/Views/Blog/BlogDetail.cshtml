@@ -1,0 +1,137 @@
+﻿@model VmSingleBlog
+@{
+    ViewBag.Title = "BlogDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Blog> lastblog = ViewBag.Latest as List<Blog>;
+    List<Tag> tags = ViewBag.Tag as List<Tag>;
+}
+
+    <div class="btc_tittle_main_wrapper">
+        <div class="btc_tittle_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_left_heading">
+                        <h1>ətraflı</h1>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_right_heading">
+                        <div class="btc_tittle_right_cont_wrapper">
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("index","home")">Ana Səhifə</a>  <i class="fa fa-angle-right"></i>
+                                </li>
+                                <li>Bloq</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- btc tittle Wrapper End -->
+    <!-- x blog main and sidebar Wrapper Start -->
+    <div class="x_blog_sidebar_main_wrapper float_left padding_tb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="x_blog_left_side_wrapper float_left">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="lr_bc_first_box_main_wrapper">
+                                    <div class="lr_bc_first_box_img_wrapper">
+                                        <img src="~/Uploads/Blog/@Model.Blog.Photo" alt="@Model.Blog.Title">
+                                    </div>
+                                    <div class="lr_bc_first_box_img_cont_wrapper">
+                                        <h2>@Model.Blog.Title</h2>
+                                        <ul>
+                                            <li>
+                                                <i class="fa fa-calendar"></i>&nbsp; <a href="#">@Model.Blog.Date.ToString("MMMM dd,yyyy")</a>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-user-o"></i>&nbsp; <a href="#">by @Model.Blog.Author.Fullname</a>
+                                            </li>
+                                           
+                                        </ul>
+                                        <p>
+                                            @Model.Blog.Desc
+                                        </p>
+                                    </div>
+                                    <div class="gc_blog_index_slider_post_wrapper gc_blog_single_index_slider_post_wrapper">
+                                        <div class="gc_blog_letest_week_wrapper" style="background:@Model.Blockquote.Background">
+                                            <div class="gc_blog_quote_wrapper">
+                                                <img src="~/Uploads/Blockquote/@Model.Blockquote.Image" alt="@Model.Blockquote.Title" />
+                                                <h3>
+                                                    " 
+                                                    @Model.Blockquote.Title
+                                                    "
+                                                </h3>
+                                                <p>- @Model.Blockquote.Author.Fullname</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blog_single_social_icon float_left">
+                                        <h3>Paylaş :</h3>
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fa fa-rss"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                           @{ 
+                               Html.RenderPartial("~/Views/Shared/_Comments.cshtml", Model);
+                           }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="x_blog_right_side_wrapper float_left">
+                        <div class="row">
+                           
+                            <div class="col-md-12">
+                                <div class="jp_rightside_job_categories_wrapper jp_rightside_job_categories_wrapper2">
+                                    <div class="jp_rightside_job_categories_heading">
+                                        <h4>Latest Post</h4>
+                                    </div>
+                                    <div class="jp_rightside_career_main_content">
+                                        @foreach (var latest in lastblog)
+                                        {
+                                             <div class="jp_rightside_career_content_wrapper">
+                                            <div class="jp_rightside_career_img">
+                                                <img src="~/Uploads/Blog/@latest.Photo" alt="@latest.Title" />
+                                            </div>
+                                            <div class="jp_rightside_career_img_cont">
+                                                <h4>
+                                                    <a href="@Url.Action("blogdetail","blog",new {latest.Slug})">
+                                                      @latest.Title
+                                                    </a>
+                                                </h4>
+                                                <p><i class="fa fa-calendar-o"></i> &nbsp;@latest.Date.ToString("dd MMM, yyyy")</p>
+                                            </div>
+                                        </div>
+                                        }
+                                       
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

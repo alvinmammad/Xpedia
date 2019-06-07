@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Xpedia.Models.AboutStory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Yarat", "Create",null , new {@class="btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+         Başlıq
+        </th>
+        <th>
+            Haqqında
+        </th>
+        <th>
+            Şəkil
+        </th>
+        <th>
+           İmza
+        </th>
+        <th>
+            Funksiyalar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desc)
+        </td>
+        <td>
+            <img src="~/Uploads/About/@item.Photo" alt="@item.Title" style="width:150px"/>
+        </td>
+        <td>
+            <img src="~/Uploads/About/@item.Signature" alt="@item.Title" />
+        </td>
+        <td>
+            @Html.ActionLink("Düzəliş et", "Edit", new { id=item.ID},new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Sil","Delete","AboutStories", new { id=item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

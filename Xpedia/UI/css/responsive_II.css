@@ -1,0 +1,313 @@
+@media (max-width: 1199px) and (min-width: 991px) {
+    .hs_main_menu a {
+        padding: 35px 17px 36px;
+    }
+}
+
+@media (max-width: 1700px) {
+    .x_why_left_main_wrapper {
+        left: -300px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .x_why_left_main_wrapper {
+        left: -500px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .btc_team_slider_wrapper .owl-theme .owl-nav {
+        left: -280px;
+        top: 240px;
+    }
+
+    .x_news_contact_second_wrapper {
+        padding-left: 40px;
+    }
+
+        .x_news_contact_second_wrapper:after {
+            left: 19px;
+        }
+
+    .slider-area .carousel-inner .carousel-item .carousel-captions .content_tabs {
+        padding-top: 140px;
+    }
+
+    .x_slider_bottom_box_wrapper i {
+        width: 100%;
+    }
+
+    .x_slider_bottom_box_wrapper h3 {
+        padding-left: 0;
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .x_book_logo_heading_wrapper:after {
+        left: -50px;
+    }
+
+    .x_why_left_main_wrapper {
+        left: -600px;
+    }
+
+    .x_footer_top_title_box_icon_cont_first {
+        margin-left: 0 !important;
+    }
+
+    .x_footer_top_title_box_icon_cont {
+        margin-left: 30px;
+    }
+
+    .x_slider_select2 {
+        margin-left: 15px;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 992px) {
+}
+
+@media (max-width: 991px) {
+    .btc_team_left_wrapper {
+        width: 100%;
+        text-align: center;
+    }
+
+        .btc_team_left_wrapper h3:after {
+            left: 0;
+            right: 0;
+            margin: 0px auto;
+        }
+
+    .btc_team_right_wrapper {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .btc_team_slider_wrapper .owl-theme .owl-nav {
+        top: 40% !important;
+        left: 0 !important;
+    }
+
+        .btc_team_slider_wrapper .owl-theme .owl-nav .owl-next {
+            left: auto;
+            right: 0;
+        }
+
+    .x_top_header_social_icon_wrapper {
+        display: none;
+    }
+
+    .hs_main_menu a {
+        padding: 35px 5px 36px;
+        font-size: 14px;
+    }
+
+    .slider-area .carousel-inner .carousel-item .carousel-captions .content {
+        padding-top: 180px;
+        padding-bottom: 180px;
+    }
+
+    .slider-area .carousel-inner .carousel-item .caption-1, .slider-area .carousel-inner .carousel-item .caption-2, .slider-area .carousel-inner .carousel-item .caption-3 {
+        min-height: 650px;
+    }
+
+    .x_slider_form_main_wrapper {
+        box-shadow: 0px 0 8px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .x_slider_bottom_box_wrapper {
+        width: 50%;
+        border-top: 1px solid #eeeeee;
+    }
+
+    .x_cou_main_box_wrapper:after, .x_cou_main_box_wrapper:before {
+        display: none;
+    }
+
+    .x_book_logo_heading_wrapper:after {
+        display: none;
+    }
+
+    .x_why_left_main_wrapper {
+        display: none;
+    }
+
+    .x_why_right_main_wrapper {
+        width: 100%;
+    }
+
+    .x_news_contact_wrapper {
+        width: 100%;
+    }
+
+    .x_news_contact_second_wrapper {
+        padding-left: 0;
+    }
+
+        .x_news_contact_second_wrapper:after {
+            display: none;
+        }
+
+    .x_news_contact_search_wrapper {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .x_footer_top_left {
+        text-align: center;
+    }
+
+    .x_footer_top_right {
+        display: none;
+    }
+
+    .x_slider_checkbox {
+        padding-top: 20px;
+    }
+
+    .x_slider_select2 {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .language, .usd {
+        display: none;
+    }
+
+    .x_top_header_all_select_box_wrapper li:last-child {
+        margin-right: 15px;
+    }
+
+    .x_top_header_left_side_wrapper p {
+        padding-left: 15px;
+    }
+
+    .x_top_header_left_side_wrapper:before {
+        width: 680px;
+    }
+
+    .x_top_header_left_side_wrapper:after {
+        right: -16px;
+    }
+
+    .slider-area .carousel-inner .carousel-item .carousel-captions .content h2 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .form-sec-header label {
+        height: auto;
+    }
+
+    .x_book_logo_heading_wrapper, .x_book_logo_btn {
+        margin-top: 30px;
+    }
+
+    .hs_logo {
+        padding-top: 8px;
+    }
+
+    .hs_logo {
+        padding-top: 23px;
+    }
+}
+
+@media (max-width: 580px) {
+
+
+    .x_slider_bottom_box_wrapper {
+        width: 100%;
+        border-left: 0;
+    }
+
+    .x_offer_tabs_wrapper .nav li {
+        float: none;
+    }
+
+    .x_offer_tabs_wrapper .nav-tabs li:first-child .nav-link.active {
+        -webkit-border-top-left-radius: 0;
+        -moz-border-top-left-radius: 0;
+        border-top-left-radius: 0;
+        -webkit-border-bottom-left-radius: 0;
+        -moz-border-bottom-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .x_offer_tabs_wrapper .nav-tabs li:last-child .nav-link.active {
+        -webkit-border-top-right-radius: 0;
+        -moz-border-top-right-radius: 0;
+        border-top-right-radius: 0;
+        -webkit-border-bottom-right-radius: 0;
+        -moz-border-bottom-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .x_offer_tabs_wrapper .nav {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+
+    .btc_ln_slider_wrapper .owl-theme .owl-nav {
+        right: 0;
+        left: 0;
+        top: 40%;
+    }
+
+        .btc_ln_slider_wrapper .owl-theme .owl-nav .owl-next {
+            left: auto;
+            right: 0;
+        }
+
+    .x_news_contact_search_wrapper input {
+        width: 100%;
+        float: none;
+    }
+
+    .x_news_contact_search_wrapper button {
+        float: none;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .slider-area .carousel-inner .carousel-item .caption-1, .slider-area .carousel-inner .carousel-item .caption-2, .slider-area .carousel-inner .carousel-item .caption-3 {
+        min-height: 600px;
+    }
+
+    .x_responsive_form_wrapper {
+        margin-top: 30px;
+    }
+
+    .slider-area .carousel-inner .carousel-item .carousel-captions .content li:first-child {
+        float: none;
+    }
+
+    .slider-area .carousel-inner .carousel-item .carousel-captions .content li:last-child {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login, .register {
+        display: none;
+    }
+
+    .x_slider_checout_left {
+        width: 100%;
+    }
+
+    .x_slider_checout_right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+}
+
+@media (max-width: 320px) {
+}

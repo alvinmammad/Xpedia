@@ -1,0 +1,401 @@
+﻿@{
+    Contact contact = ViewBag.Contact as Contact;
+}
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="utf-8" />
+    <title>Xpedia</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Xpedia" />
+    <meta name="keywords" content="Xpedia" />
+    <meta name="author" content="" />
+
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/fontawesome.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="~/UI/css/custom.css" rel="stylesheet" />
+    <link href="~/UI/css/xpedia.css" rel="stylesheet" />
+    <!--favicon-->
+    <link rel="shortcut icon" type="image/png" href="~/UI/images/fevicon.png" />
+</head>
+
+<body>
+    <!-- preloader Start -->
+    <div id="preloader">
+        <div id="status">
+            <img src="~/UI/images/loader.gif" id="preloader_image" alt="loader">
+        </div>
+    </div>
+   
+    <!-- x top header_wrapper Start -->
+    <div class="x_top_header_wrapper float_left">
+        <div class="container">
+            <div class="x_top_header_left_side_wrapper float_left">
+                <p>Telefon : @contact.Phone</p>
+            </div>
+            <div class="x_top_header_right_side_wrapper float_left">
+              
+                <div class="x_top_header_all_select_box_wrapper">
+
+                    @if (Session["LoginnedUser"]!=null)
+                    {
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="alert alert-success">
+                                        Xoş gəldiniz
+                                        @if (Session["UserFullname"] != null)
+                                        {
+                                            <strong>
+                                                @Session["UserFullname"].ToString()
+                                            </strong>
+                                        }
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    @using (Html.BeginForm("Logout", "Register", FormMethod.Post, new { id = "logoutForm" }))
+                                    {
+                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="alert alert-warning" style="top:14px">Çıxış et</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+                    }
+                    else
+                    {
+                        <ul>
+
+                            <li class="login">
+                                <a href="@Url.Action("login","register")"><i class="fa fa-power-off"></i> &nbsp;&nbsp;daxil ol</a>
+                            </li>
+
+                            <li class="register">
+                                <a href="@Url.Action("register","register")"><i class="fa fa-plus-circle"></i> &nbsp;&nbsp;qeydiyyat</a>
+                            </li>
+                         
+                        </ul>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- x top header_wrapper End -->
+    <!-- hs Navigation Start -->
+    <div class="hs_navigation_header_wrapper" style="height:94px !important">
+        <div class="container">
+            <div class="row">
+                <div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                    <div class="hs_logo_wrapper d-none d-sm-none d-xs-none d-md-block">
+                        <a href="@Url.Action("index","home")">
+                            <img src="~/UI/images/logo.png" class="img-responsive" alt="logo" title="Logo" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+
+                    <nav class="hs_main_menu d-none d-sm-none d-xs-none d-md-block">
+                        <ul>
+                            <li>
+                                <a class="menu-button single_menu" href="@Url.Action("index","home")">ana səhifə</a>
+                            </li>
+                            <li>
+                                <a class="menu-button single_menu" href="@Url.Action("car","car")">maşınlar</a>
+                            </li>
+
+                            <li>
+                                <a class="menu-button single_menu" href="@Url.Action("about")">haqqımızda</a>
+                            </li>
+
+                            <li>
+                                <a class="menu-button single_menu" href="@Url.Action("service")">servis</a>
+                            </li>
+                            <li>
+                                <a class="menu-button single_menu" href="@Url.Action("blog","blog")">bloq</a>
+                            </li>
+                            <li>
+                                <a class="menu-button single_menu" href="@Url.Action("contact")">əlaqə</a>
+                            </li>
+                            @if (Session["LoginnedUser"]==null)
+                            {
+
+
+                            }
+                            else {
+                            <li style="bottom:6px !important">
+                                <a class="menu-button single_menu" href="@Url.Action("index","user",new {id=Session["UserID"] })" style="font-size:20px">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                            </li>}
+                          
+
+
+                        </ul>
+                      
+                    </nav>
+                    <header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-6">
+                                    <div class="hs_logo">
+                                        <a href="index.html">
+                                            <img src="~/UI/images/logo.png" alt="Logo" title="Logo">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-6">
+                                    <div class="cd-dropdown-wrapper">
+                                        <a class="house_toggle" href="#0">
+                                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="511.63px" height="511.631px" viewBox="0 0 511.63 511.631" style="enable-background:new 0 0 511.63 511.631;" xml:space="preserve">
+                                            <g>
+                                            <g>
+                                            <path d="M493.356,274.088H18.274c-4.952,0-9.233,1.811-12.851,5.428C1.809,283.129,0,287.417,0,292.362v36.545
+																	c0,4.948,1.809,9.236,5.424,12.847c3.621,3.617,7.904,5.432,12.851,5.432h475.082c4.944,0,9.232-1.814,12.85-5.432
+																	c3.614-3.61,5.425-7.898,5.425-12.847v-36.545c0-4.945-1.811-9.233-5.425-12.847C502.588,275.895,498.3,274.088,493.356,274.088z"></path>
+                                            <path d="M493.356,383.721H18.274c-4.952,0-9.233,1.81-12.851,5.427C1.809,392.762,0,397.046,0,401.994v36.546
+																	c0,4.948,1.809,9.232,5.424,12.854c3.621,3.61,7.904,5.421,12.851,5.421h475.082c4.944,0,9.232-1.811,12.85-5.421
+																	c3.614-3.621,5.425-7.905,5.425-12.854v-36.546c0-4.948-1.811-9.232-5.425-12.847C502.588,385.53,498.3,383.721,493.356,383.721z"></path>
+                                            <path d="M506.206,60.241c-3.617-3.612-7.905-5.424-12.85-5.424H18.274c-4.952,0-9.233,1.812-12.851,5.424
+																	C1.809,63.858,0,68.143,0,73.091v36.547c0,4.948,1.809,9.229,5.424,12.847c3.621,3.616,7.904,5.424,12.851,5.424h475.082
+																	c4.944,0,9.232-1.809,12.85-5.424c3.614-3.617,5.425-7.898,5.425-12.847V73.091C511.63,68.143,509.82,63.861,506.206,60.241z"></path>
+                                            <path d="M493.356,164.456H18.274c-4.952,0-9.233,1.807-12.851,5.424C1.809,173.495,0,177.778,0,182.727v36.547
+																	c0,4.947,1.809,9.233,5.424,12.845c3.621,3.617,7.904,5.429,12.851,5.429h475.082c4.944,0,9.232-1.812,12.85-5.429
+																	c3.614-3.612,5.425-7.898,5.425-12.845v-36.547c0-4.952-1.811-9.231-5.425-12.847C502.588,166.263,498.3,164.456,493.356,164.456z
+																	"></path>
+													</g>
+												</g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+											</svg>
+                                        </a>
+                                        <!-- .cd-dropdown -->
+                                    </div>
+                                    <nav class="cd-dropdown">
+                                        <h2>
+                                            <a href="@Url.Action("index","home")">Xpedia</a>
+                                        </h2>
+                                        <a href="#0" class="cd-close">Bağla</a>
+                                        <ul class="cd-dropdown-content">
+                                           
+                                            <li class="has-children">
+                                                <a href="@Url.Action("index","home")">Ana səhifə</a>
+                                               
+                                                <!-- .cd-secondary-dropdown -->
+                                            </li>
+                                            <li class="has-children">
+                                                <a href="@Url.Action("car","car")">Maşınlar</a>
+                                               
+                                                <!-- .cd-secondary-dropdown -->
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("about","about")">Haqqımızda</a>
+                                            </li>
+                                            <li>
+                                                <a href=""@Url.Action("team","team")">Komandamız</a>
+                                            </li>
+                                            <li>
+                                                <a href=""@Url.Action("service","service")">Servizimiz</a>
+                                            </li>
+                                            <li>
+                                                <a href=" @Url.Action("blog", "blog") ">Bloq</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("contact", "contact")">Əlaqə</a>
+                                            </li>
+                                        </ul>
+                                        <!-- .cd-dropdown-content -->
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .cd-dropdown-wrapper -->
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- hs Navigation End -->
+    <!-- btc tittle Wrapper Start -->
+    <!-- btc tittle Wrapper End -->
+    <!-- xs offer car tabs Start -->
+    @RenderBody()
+
+    <!-- x news latter Wrapper End -->
+    <!-- x footer Wrapper Start -->
+    <div class="x_footer_top_main_wrapper float_left">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="x_footer_top_left float_left">
+                        <img src="~/UI/images/footer_logo.png" alt="logo">
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="x_footer_top_right float_left">
+                        <div class="x_footer_top_title_box x_footer_top_title_box1">
+                            <div class="x_footer_top_title_box_icon_cont">
+                                <i class="flaticon-pie-chart"></i>
+                                <h3>Son Xəbərlər</h3>
+                            </div>
+                        </div>
+                        <div class="x_footer_top_title_box">
+                            <div class="x_footer_top_title_box_icon_cont">
+                                <i class="flaticon-phone-call"></i>
+                                <h3>Ofisimizlə Əlaqə</h3>
+                            </div>
+                        </div>
+                        <div class="x_footer_top_title_box">
+                            <div class="x_footer_top_title_box_icon_cont x_footer_top_title_box_icon_cont_first">
+                                <i class="flaticon-home-page"></i>
+                                <h3>Randevu Al</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- x footer Wrapper End -->
+    <!-- x footer Wrapper Start -->
+    <div class="x_footer_bottom_main_wrapper float_left">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="x_footer_bottom_box_wrapper float_left">
+                        <h3>Haqqımızda</h3>
+                       
+                        <span><a href="@Url.Action("about", "about")">Ətaflı &nbsp;<i class="fa fa-angle-double-right"></i></a></span>
+                        <ul>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="x_footer_bottom_box_wrapper_second float_left">
+                        <h3>Məlumat</h3>
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("about")"><i class="fa fa-long-arrow-right"></i> &nbsp; Haqqımızda</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("service")"><i class="fa fa-long-arrow-right"></i> &nbsp; Servislərimiz</a>
+                            </li>
+                          
+                           
+                            <li>
+                                <a href="@Url.Action("service")"><i class="fa fa-long-arrow-right"></i> &nbsp; Ən yaxşı qiymət zəmanəti</a>
+                            </li>
+                          
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="x_footer_bottom_box_wrapper_third float_left">
+                        <h3>Sualın var?</h3>
+                        <div class="x_footer_bottom_icon_section float_left">
+                            <div class="x_footer_bottom_icon">
+                                <i class="flaticon-phone-call"></i>
+                            </div>
+                            <div class="x_footer_bottom_icon_cont">
+                                <h4>Beynalxalq əlaqə</h4>
+                                <p>@contact.Phone</p>
+                            </div>
+                        </div>
+                        <div class="x_footer_bottom_icon_section x_footer_bottom_icon_section2 float_left">
+                           
+                           
+                        </div>
+                        <div class="x_footer_bottom_icon_section x_footer_bottom_icon_section2 float_left">
+                            <div class="x_footer_bottom_icon x_footer_bottom_icon3">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <div class="x_footer_bottom_icon_cont x_footer_bottom_icon_cont2">
+                                <h4>
+                                    <a href="@Url.Action("contact")">Bizi xəritədə tap</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="x_copyr_main_wrapper float_left">
+        <a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up"></i></a>
+        <div class="container">
+            <p>Müəllif hüquqları © 2019 Xpedia. Bütün hüquqlar qorunur.</p>
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+   
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
+    @Scripts.Render("~/bundles/xpedia")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.79/jquery.form-validator.min.js"></script>
+    <script>
+        $.validate({
+            modules: 'html5'
+        });
+
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", false)
+</body>
+</html>

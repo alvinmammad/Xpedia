@@ -1,0 +1,32 @@
+﻿@model Xpedia.Models.Author
+
+@{
+    ViewBag.Title = "Sil";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3>Silmək istədiyinizdən əminsinizmi ?</h3>
+<div>
+    <h4>Yazarlar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Ad Soyad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fullname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Geriyə qayıt", "Index",null,new {@class="btn btn-outline-primary" })
+        </div>
+    }
+</div>

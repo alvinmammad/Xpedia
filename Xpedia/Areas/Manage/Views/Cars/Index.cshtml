@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Xpedia.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .table td ,.table th{
+        word-break:keep-all !important;
+    }
+    .table {
+        table-layout:auto !important;
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Yarat", "Create",null,new {@class="btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+         Model
+        </th>
+        <th>
+         Hal-hazırki məkan
+        </th>
+        <th>
+         Günlük qiymət
+        </th>
+        <th>
+          İnformasiya
+        </th>
+        <th>
+           2 hava çıxışı
+        </th>
+        <th>
+           Yanacaq növü
+        </th>
+        <th>
+          Ötürücü
+        </th>
+        <th>
+           Növü
+        </th>
+        <th>
+         İl
+        </th>
+        <th>
+           Mühərrik tutumu
+        </th>
+        <th>
+          Mühərrik gücü
+        </th>
+        <th>
+          Kirayədədir mi
+        </th>
+        <th>
+         Endirimi
+        </th>
+        <th>
+         Oturacaq sayı
+        </th>
+        <th>
+           Şəkil
+        </th>
+       
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PricePerDay) ₼
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Information)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TwoAir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fuel)
+        </td>
+        @if (item.Transmission == Transmissions.Avtomatlaşdırılmışmexanika)
+        {
+            <td>
+                Avtomatlaşdırılmış mexanika
+            </td>
+        }
+        else if (item.Transmission == Transmissions.Davamlıdəyişənötürücü)
+        {
+            <td>
+                Davamlı dəyişən ötürücü
+            </td>
+        }
+        else if (item.Transmission == Transmissions.Avtomat)
+        {
+            <td>
+               Avtomat
+            </td>
+        }
+        else if (item.Transmission == Transmissions.Mexanika)
+        {
+            <td>
+               Mexanika
+            </td>
+        }
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.CarType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EngineCapacity) cc
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnginePower) a.g
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsRented)
+        </td>
+        @if (item.Discount > 0)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount) %
+            </td>
+
+        }
+        else
+        {
+            <td>Yoxdur</td>
+        }
+
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatCount)
+        </td>
+        <td>
+            <img src="~/Uploads/Car/@item.Image" alt="@item.CarModel.Name" />
+        </td>
+        
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-info" })
+
+        </td>
+        <td>
+            @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

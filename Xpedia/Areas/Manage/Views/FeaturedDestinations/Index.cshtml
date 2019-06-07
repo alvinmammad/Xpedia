@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Xpedia.Models.FeaturedDestination>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Yarat", "Create",null,new {@class="btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+          Məkan haqqında
+        </th>
+        <th>
+           Şəkil
+        </th>
+        <th>
+            Məkanın adı
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Info)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Yenilə", "Edit", new { id=item.ID },new {@class="btn btn-info" }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

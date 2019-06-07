@@ -1,0 +1,109 @@
+﻿@model VmUserLogin
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="btc_tittle_main_wrapper">
+    <div class="btc_tittle_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_left_heading">
+                    <h1>Daxil ol</h1>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_right_heading">
+                    <div class="btc_tittle_right_cont_wrapper">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("index","home")">Ana Səhifə</a>  <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>Daxil Ol</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="x_partner_main_wrapper float_left padding_tb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_offer_car_heading_wrapper float_left">
+                    <h3>Profilinizə daxil olun</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-12 col-sm-12 col-12">
+                <!-- login_wrapper -->
+
+                <div class="login_wrapper">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+                            <a href="#" class="btn btn-primary" id="fb_btn"> <span>Facebookla daxil olun</span><i class="fa fa-facebook-f"></i> </a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+                            <a href="#" class="btn btn-primary google-plus">Google ilə daxil olun <i class="fa fa-google"></i> </a>
+                        </div>
+                    </div>
+                    <h2>və ya</h2>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        if (ViewBag.Message != "")
+                        {
+                            <div class="text-danger">*@ViewBag.Message</div>
+                            <div class="formsix-pos">
+
+                                <div class="form-group i-email">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "E-poçt", @class = "form-control", @id = "email2", @type = "email" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="formsix-e">
+                                <div class="form-group i-password">
+                                    <input type="hidden" name="ViewBag.Return" value="@ViewBag.Return" />
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Şifrə", @class = "form-control", @id = "password2", @type = "password" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="login_remember_box">
+                                <label class="control control--checkbox">
+                                    Yadda saxla
+                                    @Html.EditorFor(model => model.RememberMe)
+                                    @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                                    <input type="checkbox" name="RememberMe">
+                                    <span class="control__indicator"></span>
+                                </label>
+                                <a href="@Url.Action("ForgotPassword","Register")" class="forget_password">
+                                    Şifrəni unutmuşam
+                                </a>
+                            </div>
+                            @*@Html.ValidationMessage("summary");*@
+                            <div class="login_btn_wrapper">
+                                <input type="submit" class="btn btn-primary" name="name" value="Daxil ol" />
+                            </div>
+                        }
+                    }
+
+                    <div class="login_message">
+                        <p>İstifadəçi deyilsiniz? <a href="@Url.Action("register","register")"> Qeydiyyatdan keç</a> </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

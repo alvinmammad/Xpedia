@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Xpedia.Models.Author>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Yarat", "Create" , null , new {@class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Ad Soyad
+        </th>
+        <th>Funksiyalar</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fullname)
+        </td>
+        <td>
+            @Html.ActionLink("Düzəliş et","Edit", "Authors", new { id=item.ID } , new {@class="btn btn-info" }) |
+            @Html.ActionLink("Sil","Delete", "Authors", new { id=item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

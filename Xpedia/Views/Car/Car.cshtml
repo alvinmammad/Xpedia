@@ -1,0 +1,170 @@
+﻿@model VmCar
+@{
+    ViewBag.Title = "Car";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Brand> brands = ViewBag.Brands as List<Brand>;
+    VmSearchingCar searched = ViewBag.Searched as VmSearchingCar;
+    List<Location> locations = ViewBag.Locations as List<Location>;
+}
+
+
+
+<div class="btc_tittle_main_wrapper">
+    <div class="btc_tittle_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_left_heading">
+                    <h1>maşınlar</h1>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_right_heading">
+                    <div class="btc_tittle_right_cont_wrapper">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("index", "home")">Ana Səhifə</a>  <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="#">Maşınlar</a>  <i class="fa fa-angle-right"></i>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="x_car_book_sider_main_Wrapper float_left">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 @*--custom_leftWrapper*@">
+                <div class="x_car_book_left_siderbar_wrapper float_left">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb">
+                                <div class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left">
+                                    <h3>Let’s find your perfect car</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="x_slider_form_input_wrapper float_left">
+                                            <h3>Götürülmə Məntəqəsi</h3>
+                                            <select class="form-control required" id="searchedPickUpLocation" name="PickUpLocation" data-val="true" data-val-required="Götürülmə məntəqəsi boş ola bilməz" data-validation="required" data-validation-optional="true" required>
+                                                <option value=""></option>
+                                                @foreach (var location in locations)
+                                                {
+                                                    <option value="@location.ID">@location.Name</option>
+                                                }
+                                            </select>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="PickUpLocation" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="x_slider_form_input_wrapper float_left">
+                                            <h3>Qaytarılma Məntəqəsi</h3>
+                                            <select class="form-control" id="searchedDropOffLocation" name="DropOffLocation" data-val="true" data-val-required="Qaytarılma məntəqəsi boş ola bilməz" data-validation="required" data-validation-optional="true" required>
+                                                <option value=""></option>
+                                                @foreach (var location in locations)
+                                                {
+                                                    <option value="@location.ID">@location.Name</option>
+                                                }
+                                            </select>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="DropOffLocation" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-sec-header">
+                                            <h3>Götürülmə vaxtı</h3>
+                                            <label>
+                                                Götürülmə vaxtı
+                                            </label>
+                                            <input type="text" placeholder="@DateTime.Now.ToString("dd-MM-yyyy")" class="form-control checkIn" name="PickUpDate" id="searchedpickdate" autocomplete="off" data-val="true" data-val-required="Götürülmə vaxtı boş ola bilməz" data-validation="required" data-validation-optional="true" data-date-format="yyyy-mm-dd">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="PickUpDate" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-sec-header">
+                                            <h3>Qaytarılma vaxtı</h3>
+                                            <label>
+                                                Qaytarılma vaxtı
+                                            </label>
+                                            <input type="text" placeholder="@DateTime.Now.ToString("dd-MM-yyyy")" class="form-control checkOut" name="DropOffDate" id="searchedropdate" autocomplete="off" data-val="true" data-val-required="Qaytarılma vaxtı boş ola bilməz" data-validation="required" data-validation-optional="true">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="DropOffDate" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="x_slider_checout_right">
+                                            <ul>
+                                                <li>
+                                                    <a class="carSearchBtn filter" id="searchwithAJAX">Axtar</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
+                <div class="x_carbooking_right_section_wrapper float_left">
+                    <div class="row">
+                      
+                        <div class="col-md-12">
+                            <div class="x_car_book_tabs_content_main_wrapper">
+                                <div class="tab-content">
+                                    <div id="searchedhome" class="tab-pane active">
+                                       @{
+                                           Html.RenderPartial("~/Views/Car/CarList.cshtml" , Model);
+                                       } 
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="pager_wrapper prs_blog_pagi_wrapper">
+                                            @if (Model != null || Model.Cars.Count>=12)
+	                                        {
+                                            <ul class="pagination">
+                                                @if (Model.Page != 1)
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action("car","car",new {page=Model.Page-1 })"><i class="flaticon-left-arrow"></i></a>
+                                                    </li>
+                                                }
+
+
+                                                @for (int i = 1; i <= Model.TotalPage; i++)
+                                                {
+                                                    <li class="btc_shop_pagi">
+                                                        <a href="@Url.Action("car","car",new {page=i })">@i</a>
+                                                    </li>
+                                                }
+
+                                                @if (Model.Page != Model.TotalPage)
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action("car","car",new {page=Model.Page+1 })"><i class="flaticon-right-arrow"></i></a>
+                                                    </li>
+                                                }
+
+                                            </ul>
+	                                        }
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

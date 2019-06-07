@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Xpedia.Models.Driver>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yarat", "Create",null,new {@class="btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Başlıq
+        </th>
+        <th>
+            Haqqında
+        </th>
+        <th>
+           Sürücünün şəkli
+        </th>
+        <th>
+           Sürücünün ad soyadı
+        </th>
+        <th>
+            Sürücünün yaşı
+        </th>
+        <th>
+            Sürücünün illik təcrübəsi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desc)
+        </td>
+        <td>
+            <img src="~/Uploads/Driver/@item.Photo" alt="@item.Fullname" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExperienceYear)
+        </td>
+        <td>
+            @Html.ActionLink("Yenilə", "Edit", new { id=item.ID },new {@class="btn btn-info" }) |
+        
+            @Html.ActionLink("Sil", "Delete", new { id=item.ID }, new { @class = "btn btn-outline-primary" })
+        </td>
+    </tr>
+}
+
+</table>

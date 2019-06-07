@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Xpedia.Models.Blockquote>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Yarat", "Create",null,new {@class="btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Yazarın adı və soyadı
+        </th>
+        <th>
+          Arxa-fon rəngi
+        </th>
+        <th>
+          Şəkil
+        </th>
+        <th>
+          Başlıq
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Background)
+        </td>
+        <td>
+            <img src="~/Uploads/Blockquote/@item.Image" alt="@item.Title" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Düzəliş et","Edit", "Blockquotes", new { id=item.ID },new {@class="btn btn-info" }) |
+            @Html.ActionLink("Sil","Delete", new { id=item.ID },new {@class="btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,163 @@
+﻿@model VmService
+@{
+    ViewBag.Title = "Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="btc_tittle_main_wrapper">
+        <div class="btc_tittle_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_left_heading">
+                        <h1>Servis</h1>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_right_heading">
+                        <div class="btc_tittle_right_cont_wrapper">
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("index","home")">Ana Səhifə</a>  <i class="fa fa-angle-right"></i>
+                                </li>
+                                <li>Servis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- btc tittle Wrapper End -->
+    <!-- btc service title Wrapper Start -->
+    <div class="x_services_title_main_wrapper float_left padding_tb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_offer_car_heading_wrapper x_offer_car_tb_heading_wrapper float_left">
+                        <h4>Servisimiz</h4>
+                        <h3>@Model.Service.Title</h3>
+                        <p>@Model.Service.Desc</p>
+                    </div>
+                </div>
+                @foreach (var card in Model.Cards)
+                {
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 full_width">
+                        <div class="x_slider_bottom_box_wrapper x_service_inner_main_box">
+                            <i class="@card.Icon"></i>
+                            <h3><a href="#">@card.Title</a></h3>
+                            <p>
+                               @card.Info
+                            </p>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- btc service title Wrapper End -->
+    <!-- xs offer car tabs Start -->
+    <div class="x_offer_car_main_wrapper x_offer_testislider_main_wrapper float_left padding_tb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_offer_car_heading_wrapper float_left">
+                        <h4>Rəsmi Rəylər</h4>
+                        <h3>@Model.Testimonial.Title</h3>
+                        <p>@Model.Testimonial.Desc</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="screenshot">
+                        <div class="owl-carousel screen nplr screen-loop">
+                            @foreach (var review in Model.TestimonialItems)
+                            {
+                                <div>
+                                    <div class="card valign-wrapper">
+                                     
+                                        <div class="card-image">
+                                            <img src="~/Uploads/Testimonial/@review.Photo" alt="@review.Fullname">
+                                        </div>
+                                       
+                                        <div class="card-content center-align valign">
+                                           
+                                            <p>“ @review.Review ”</p>
+                                          
+                                            <p class="card-title">
+                                                @review.Fullname <span>@review.TestimonialRole.Name</span>
+                                            </p>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- btc team Wrapper Start -->
+    <!-- x booking Wrapper Start -->
+    <div class="x_booking_main_wrapper float_left">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="x_book_logo_wrapper float_left">
+                        <img src="~/UI/images/white_logo.png" alt="logo">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="x_book_logo_heading_wrapper float_left">
+                        <h3>Xpedia!</h3>
+                        <p>Bazarda ən məşhur maşın icarə vebsaytı.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="x_book_logo_btn float_left">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("car","car")">Bütün maşınlar<i class="fa fa-arrow-right"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="x_partner_main_wrapper float_left padding_tb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_offer_car_heading_wrapper float_left">
+                        <h3>markalarımız</h3>
+                        <p>
+                            Xpedia kirayə maşınlar, transfer və sürücü xidmətləri təklif edir.
+                            <br>Rent a car sahəsində 2019-ci ildə etibarən professional olaraq fəaliyyət göstəririk.
+                            <br>Etibarlı və sərfəli avtomobil icarəsi lazımdırsa, xidmətlərimizdən yararlanın.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wrap-album-slider">
+                        <ul class="album-slider">
+                            @foreach (var brand in Model.Logos)
+                            {
+                                <li class="album-slider__item">
+                                    <figure class="album">
+                                        <img src="~/Uploads/CarLogos/@brand.Logo" alt="" style="width:130px">
+                                    </figure>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

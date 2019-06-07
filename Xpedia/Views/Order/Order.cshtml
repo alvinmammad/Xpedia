@@ -1,0 +1,101 @@
+﻿@model VmOrder
+@{
+    ViewBag.Title = "BookingDone";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var diff = (Model.DropOffDate - Model.PickUpDate).TotalDays;
+}
+
+
+    <div class="btc_tittle_main_wrapper">
+        <div class="btc_tittle_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_left_heading">
+                        <h1>rezerv</h1>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_right_heading">
+                        <div class="btc_tittle_right_cont_wrapper">
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("index","home")">Ana səhifə</a>  
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="x_car_donr_main_box_wrapper float_left">
+        <div class="container">
+            <div class="x_car_donr_main_box_wrapper_inner">
+                <div class="order-done">
+                    <i class="icon-checked"><img src="~/UI/images/icon-checked.png" alt=""></i>
+                    <h4>Təşəkkürlər! rezerviniz qəbul olundu . Admin tərəfindən qəbul olunduğunda profilinizdə görə bilərsiniz.</h4>
+                    <h4>rezerv nömrəniz: <span>#@Model.OrderNumber</span></h4>
+                    <hr>
+                    <h4>detallar</h4>
+                    <ul class="row list-unstyled">
+                        <li class="col-md-6">
+                            <h6>Tarix</h6>
+                            <p>
+                                Götürülmə <span>@Model.PickUpDate.ToString("dd-mm-yyyy") </span>
+                            </p>
+                            <p>
+                                Qaytarılma <span>@Model.DropOffDate.ToString("dd-mm-yyyy")</span>
+                            </p>
+                            <p>
+                                Gün sayı <span>@diff Day</span>
+                            </p>
+                        </li>
+                        <li class="col-md-6">
+                            <h6>Məkan</h6>
+                            <p>
+                                Götürülmə <span>@Model.PickUpLocation</span>
+                            </p>
+                            <p>
+                                Qaytarılma <span>@Model.DropOffLocation</span>
+                            </p>
+                        </li>
+                        <li class="col-md-6">
+                            <h6>Maşın</h6>
+                            <p>
+                                @Model.SelectedCar.CarModel.Brand.Name @Model.SelectedCar.CarModel.Name <span>₼@(Model.SelectedCar.Discount>0?(Model.SelectedCar.PricePerDay*Model.SelectedCar.Discount):Model.SelectedCar.PricePerDay)</span>
+                            </p>
+                            <p>@Model.SelectedCar.CarType</p>
+                        </li>
+                       
+                       
+                        <li class="col-md-12">
+                            <h6>Çatdırılma Məlumatları</h6>
+                            <p>
+                                @Model.User.FirstName
+                                <br>
+                                @Model.User.LastName
+                                <br>
+
+                                @Model.User.Address
+                                <br>
+
+                                @Model.User.Email
+                                <br>
+
+                                @Model.User.Username
+                                <br>
+
+                                @Model.User.DriverLicenseID
+                            </p>
+                        </li>
+                       
+                    </ul>
+                    <hr>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+   

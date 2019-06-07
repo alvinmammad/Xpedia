@@ -1,0 +1,39 @@
+﻿@model Xpedia.Models.LogoSlider
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        @using (Html.BeginForm("create", "logosliders", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Loqo Slayderi</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Logo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Logo, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                        @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Yarat" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Geriyə qayıt", "Index", null, new { @class = "btn btn-outline-primary" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

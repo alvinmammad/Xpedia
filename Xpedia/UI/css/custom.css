@@ -1,0 +1,302 @@
+﻿.--custom_btn {
+    width: 230px;
+    float: left;
+    height: 50px;
+    line-height: 45px;
+    text-align: center;
+    background: #4f5dec;
+    color: #ffffff;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    border-radius:10px;
+    transition:all 1s ease;
+}
+
+.--custom_btn:hover{
+    background:transparent;
+    color:#4f5dec;
+    border-color:#4f5dec;
+}
+
+
+
+
+
+.control-label {
+    display: block;
+}
+
+.autocomplete-wrapper {
+    position: relative;
+}
+
+    .autocomplete-wrapper input {
+        width: 100%;
+    }
+
+.autocomplete-results {
+    position: absolute;
+    background: white;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    font-size: 13px;
+    border: solid 1px #ddd;
+    border-top-width: 0;
+    border-bottom-color: #ccc;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.autocomplete-result {
+    padding: 12px 15px;
+    border-bottom: solid 1px #eee;
+    cursor: pointer;
+}
+
+    .autocomplete-result:last-child {
+        border-bottom-width: 0;
+    }
+
+.autocomplete-location {
+    opacity: 0.8;
+    font-size: smaller;
+}
+
+.autocomplete-results[data-highlight="0"] > :nth-child(1) {
+    color: white;
+    background: #26c9ff;
+    border-bottom-color: #26c9ff;
+    outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight="1"] > :nth-child(2) {
+    color: white;
+    background: #26c9ff;
+    border-bottom-color: #26c9ff;
+    outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight="2"] > :nth-child(3) {
+    color: white;
+    background: #26c9ff;
+    border-bottom-color: #26c9ff;
+    outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight="3"] > :nth-child(4) {
+    color: white;
+    background: #26c9ff;
+    border-bottom-color: #26c9ff;
+    outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight="4"] > :nth-child(5) {
+    color: white;
+    background: #26c9ff;
+    border-bottom-color: #26c9ff;
+    outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight="5"] > :nth-child(6) {
+    color: white;
+    background: #26c9ff;
+    border-bottom-color: #26c9ff;
+    outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight="6"] > :nth-child(7) {
+    color: white;
+    background: #26c9ff;
+    border-bottom-color: #26c9ff;
+    outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight="7"] > :nth-child(8) {
+    color: white;
+    background: #26c9ff;
+    border-bottom-color: #26c9ff;
+    outline: solid 1px #00b6f2;
+}
+
+.--custom_leftWrapper{
+    top:50px !important;
+}
+
+.carSearchBtn {
+    float: left;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #4f5dec;
+    color: #ffffff;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.--custom_option {
+    width: 16%;
+    position: relative;
+    left: 40%;
+}
+
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    /*padding: 16px;*/
+    border-radius:100% !important;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+    }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+#searchwithAJAX{
+    color:white !important;
+}
+    #searchwithAJAX:hover {
+        color: #4f5dec !important;
+    }
+
+#notfound {
+    position: relative;
+    height: 100vh;
+}
+
+    #notfound .notfound {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+.notfound {
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    line-height: 1.4;
+}
+
+    .notfound .notfound-404 {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        margin: 0px auto 50px;
+    }
+
+        .notfound .notfound-404 > div:first-child {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #ffa200;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            border: 5px dashed #000;
+            border-radius: 5px;
+        }
+
+            .notfound .notfound-404 > div:first-child:before {
+                content: '';
+                position: absolute;
+                left: -5px;
+                right: -5px;
+                bottom: -5px;
+                top: -5px;
+                -webkit-box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.1) inset;
+                box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.1) inset;
+                border-radius: 5px;
+            }
+
+        .notfound .notfound-404 h1 {
+            font-family: 'Cabin', sans-serif;
+            color: #000;
+            font-weight: 700;
+            margin: 0;
+            font-size: 90px;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            left: 50%;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+        }
+
+    .notfound h2 {
+        font-family: 'Cabin', sans-serif;
+        font-size: 33px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 7px;
+    }
+
+    .notfound p {
+        font-family: 'Cabin', sans-serif;
+        font-size: 16px;
+        color: #000;
+        font-weight: 400;
+    }
+
+    .notfound a {
+        font-family: 'Cabin', sans-serif;
+        display: inline-block;
+        padding: 10px 25px;
+        background-color: #8f8f8f;
+        border: none;
+        border-radius: 40px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+
+        .notfound a:hover {
+            background-color: #2c2c2c;
+        }

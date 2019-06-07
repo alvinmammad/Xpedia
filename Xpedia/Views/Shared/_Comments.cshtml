@@ -1,0 +1,63 @@
+﻿@model VmSingleBlog
+
+<div class="blog_single_comment_heading_wrapper">
+    <div class="blog_single_comment_heading">
+        <h4>Rəylər (@Model.Comments.Count)</h4>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="row">
+        @foreach (var comment in Model.Comments)
+        {
+            <div class="col-md-12">
+                <div class="blog_single_comment_wrapper">
+                    <div class="blog_comment1_wrapper">
+                        <div class="blog_comment1_cont">
+                            <h3>@comment.Author<i class="fa fa-circle"></i> <span>@comment.Date.ToString("MMMM dd,yyyy")</span></h3>
+                            <p>@comment.Body</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+</div>
+<div class="col-md-12">
+    <form action="@Url.Action("comments","blog")" method="post">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contect_heading_wrapper">
+                    <div class="gc_blog_single_form_heading">
+                        <h4>Rəy bildir</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="contect_form1">
+                    <input type="text" placeholder="Adınız *" name="Author"><i class="fa fa-user"></i>
+                </div>  
+            </div>
+
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="contect_form4">
+                    <textarea rows="4" placeholder="Rəy " name="Body"></textarea><i class="fa fa-pencil-square-o"></i>
+                </div>
+            </div>
+            <input type="hidden" name="BlogID" value="@Model.Comments.First().BlogID" />
+            <input type="hidden" name="Slug" value="@Model.Comments.First().Blog.Slug" />
+
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="contect_btn">
+                    <ul>
+                        <li>
+                            <button type="submit" class="--custom_btn">Göndər <i class="fa fa-arrow-right"></i></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

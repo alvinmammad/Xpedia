@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Xpedia.Models.Order>
+
+@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Yarat", "Create",null,new {@class="btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Maşın ID
+        </th>
+        <th>
+           İstifadəçinin e-poçtu
+        </th>
+        <th>
+           Rezervasiya nömrəsi
+        </th>
+        <th>
+           Maşının götürülmə məntəqəsi
+        </th>
+        <th>
+            Maşının qaytarılma məntəqəsi
+        </th>
+        <th>
+            Maşının götürülmə vaxtı
+        </th>
+        <th>
+            Maşının qaytarılma vaxtı
+        </th>
+        <th>
+           Rezervasiya təsdiqi
+        </th>
+        <th>
+            Bitməni təsdiqlə
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickUpLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DropOffLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickUpDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DropOffDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoFinish)
+        </td>
+        <td>
+            <a class="mr-2" href="@Url.Action("edit" , new { id=item.ID })">
+                <i class="fas fa-edit"></i>
+            </a>
+            <a class="text-danger" href="@Url.Action("delete", new { id=item.ID })">
+                <i class="fas fa-trash"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

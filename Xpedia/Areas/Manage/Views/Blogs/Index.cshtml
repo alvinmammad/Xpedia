@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Xpedia.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Yarat", "Create",null,new {@class="btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Yazar ad soyadı
+        </th>
+        <th>
+           Kateqoriya
+        </th>
+        <th>
+           Başlıq
+        </th>
+        <th>
+            Tarix
+        </th>
+       
+        <th>
+           İnformasiya
+        </th>
+        <th>
+           Haqqında
+        </th>
+        <th>
+           Slaq
+        </th>
+        <th>
+           Şəkil
+        </th>
+        <th>Funksiyalar</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Info)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slug)
+        </td>
+        <td>
+            <img src="~/Uploads/Blog/@item.Photo" alt="@item.Title" />
+        </td>
+        <td>
+            @Html.ActionLink("Editlə", "Edit", new { id=item.ID },new {@class="btn btn-info"}) 
+            @Html.ActionLink("Sil", "Delete", new { id=item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

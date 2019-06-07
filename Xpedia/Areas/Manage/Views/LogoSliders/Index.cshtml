@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Xpedia.Models.LogoSlider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Yarat", "Create", null,new {@class="btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Loqo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="~/Uploads/CarLogos/@item.Logo" alt="" />
+        </td>
+        <td>
+            @Html.ActionLink("Yenilə", "Edit", new { id=item.ID },new {@class="btn btn-info" }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

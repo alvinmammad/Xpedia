@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Xpedia.Models.Setting>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Yarat", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Saytın loqosu
+        </th>
+      
+        <th>
+          "Choose us" başlığı
+        </th>
+        <th>
+            "Choose us" haqqında
+        </th>
+        <th>
+            "Choose us" button teksti
+        </th>
+        <th>
+            "Choose us" şəkli
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="~/Uploads/Settings/@item.Logo" />
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.ChooseUsTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChooseUsDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChooseUsButtonText)
+        </td>
+        <td>
+            <img src="~/Uploads/Settings/@item.ChooseUsPhoto" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-info" })
+
+        </td>
+        <td>
+            @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

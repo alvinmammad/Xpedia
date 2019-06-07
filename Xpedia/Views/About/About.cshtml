@@ -1,0 +1,233 @@
+﻿@model VmAbout
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="btc_tittle_main_wrapper">
+        <div class="btc_tittle_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_left_heading">
+                        <h1>Haqqımızda</h1>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_right_heading">
+                        <div class="btc_tittle_right_cont_wrapper">
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("index","home")">Ana Səhifə</a>  <i class="fa fa-angle-right"></i>
+                                </li>
+                                <li>Haqqımızda</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="x_about_seg_main_wrapper float_left padding_tb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="x_about_seg_img_wrapper float_left">
+                        <img src="~/Uploads/About/@Model.About.Photo" alt="@Model.About.Title">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="x_about_seg_img_cont_wrapper float_left">
+                        <h3>@Model.About.Title</h3>
+                        <p>
+                           @Model.About.Desc
+                        </p>
+                        <img src="~/Uploads/About/@Model.About.Signature" alt="@Model.About.Title">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="counto_main_wrapper">
+        <div class="counto_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <section class="counter-section section-padding">
+                        <div class="row">
+                            <div class="trucking_counter">
+                                @foreach (var fact in Model.Facts)
+                                {
+                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                                        <div class="con con_right_border">
+                                            <i class="@fact.Icon"></i>
+                                        </div>
+                                        <div class="count-description">
+                                            <span class="timer">@fact.Key</span>
+                                            <h5 class="con1">@fact.Value</h5>
+                                        </div>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  counter Wrapper End -->
+    <!-- xs offer car tabs Start -->
+    <div class="x_ln_car_main_wrapper float_left padding_tb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_ln_car_heading_wrapper float_left">
+                        <h3>Komandamız</h3>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="btc_ln_slider_wrapper">
+                        <div class="owl-carousel owl-theme">
+                            @foreach (var team in Model.Teams)
+                            {
+                                <div class="item">
+                                    <div class="btc_team_slider_cont_main_wrapper">
+                                        <div class="btc_team_img_wrapper">
+                                            <img src="~/Uploads/Team/@team.Photo" alt="@team.Fullname">
+
+                                        </div>
+                                        <div class="btc_team_img_cont_wrapper">
+                                            <h4><a href="#">@team.Fullname</a></h4>
+                                            <p>(@team.TeamCategory.Name)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--js Start-->
+    <!-- x counter Wrapper Start -->
+    <div class="x_counter_main_wrapper">
+        <div class="x_counter_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_counter_car_heading_wrapper float_left">
+                        <h4>İş Prosesi</h4>
+                        <h3>Necə işləyir?</h3>
+                        <p>
+                            Biz sizin vaxtınıza qənaət edəcək və sizə lazım olan avtomobili seçməkdə köməkçi ola biləcək
+                            çox rahat onlayn sifariş sistemini tədbiq etdik. Cəmi bir neçə addıma rahatlıqla seçiminizi edin :
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="x_cou_main_box_wrapper">
+                        <div class="x_icon">
+                            <i class="flaticon-airplane-shape"></i>
+                        </div>
+                        <h5><span>1.</span> <a href="#">Yeri təyin et</a></h5>
+                       
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="x_cou_main_box_wrapper">
+                        <div class="x_icon">
+                            <i class="flaticon-calendar"></i>
+                        </div>
+                        <h5><span>2.</span> <a href="#">vaxtı seç</a></h5>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="x_cou_main_box_wrapper">
+                        <div class="x_icon">
+                            <i class="flaticon-sedan-car-front"></i>
+                        </div>
+                        <h5><span>3.</span> <a href="#">maşını seç</a></h5>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="x_cou_main_box_wrapper x_cou_main_box_wrapper_last">
+                        <div class="x_icon">
+                            <i class="flaticon-emoticon-square-smiling-face-with-closed-eyes"></i>
+                        </div>
+                        <h5><span>4.</span> <a href="#">səyahətdən həzz al</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- x counter Wrapper End -->
+    <!-- x booking Wrapper Start -->
+    <div class="x_booking_main_wrapper float_left">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="x_book_logo_wrapper float_left">
+                        <img src="~/UI/images/white_logo.png" alt="logo">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="x_book_logo_heading_wrapper float_left">
+                        <h3>Xpedia!</h3>
+                        <p>Bazarda ən məşhur maşın icarə vebsaytı.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="x_book_logo_btn float_left">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("car","car")">Bütün maşınlar<i class="fa fa-arrow-right"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- x booking Wrapper End -->
+    <!-- xs offer car tabs Start -->
+    <div class="x_partner_main_wrapper float_left padding_tb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_offer_car_heading_wrapper float_left">
+                        <h4>Our Cars Partners</h4>
+                        <h3>markalarımız</h3>
+                        <p>
+                            Xpedia kirayə maşınlar, transfer və sürücü xidmətləri təklif edir.
+                            <br>Rent a car sahəsində 2019-ci ildə etibarən professional olaraq fəaliyyət göstəririk.
+                            <br>Etibarlı və sərfəli avtomobil icarəsi lazımdırsa, xidmətlərimizdən yararlanın.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wrap-album-slider">
+                        <ul class="album-slider">
+                            @foreach (var brand in Model.Logos)
+                            {
+                                <li class="album-slider__item">
+                                    <figure class="album">
+                                        <img src="~/Uploads/CarLogos/@brand.Logo" alt="img" style="width:130px">
+                                    </figure>
+                                </li>
+
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+   
